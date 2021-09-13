@@ -1,0 +1,37 @@
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        last=0
+        l=[]
+        for i in s:
+            if i=="I":
+                value=1
+            elif i=="V":
+                value=5
+            elif i=="X":
+                value=10
+            elif i=="L":
+                value=50
+            elif i=="C":
+                value=100
+            elif i=="D":
+                value=500
+            elif i=="M":
+                value=1000
+            l.append(value)
+        l=l[::-1]
+        ans=0
+        for items in l:
+            if items>=last:
+                ans=ans+items
+            elif items<last:
+                ans=ans-items
+            last=items
+        return ans
+                
+            # if value==last:
+                # last=value+last
+            # elif value>last:
+                # last=value-last
+            # else:
+                # last=value+last
+        # return last
