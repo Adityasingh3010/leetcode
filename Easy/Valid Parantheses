@@ -1,0 +1,35 @@
+class Solution:
+    def isValid(self, s: str) -> bool:   #(]
+        l=[]
+        count=0
+        # added=1
+        for items in s:
+            if items=='(' or items=="[" or items=='{':
+                l.append(items)
+                count+=1
+                # added=0
+            elif items==')' and len(l)!=0:
+                if l[-1]=="(":
+                    count-=1
+                    # added=1
+                    l.pop()
+                else:
+                    return False
+            elif items=="]" and len(l)!=0:
+                if l[-1]=='[':
+                    l.pop()
+                    # added=1
+                    count-=1
+                else:
+                    return False
+            elif items=='}' and len(l)!=0:
+                if l[-1]=='{':
+                    l.pop()
+                    # added=1
+                    count-=1
+                else:
+                    return False
+            else:
+                return False
+        if count==0:# and added==1:
+            return True
